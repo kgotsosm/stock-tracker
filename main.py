@@ -63,7 +63,13 @@ top_forty = {
 
 @app.get("/fetch_yahoo_data")
 def fetch_yahoo_data():
-    data = {}
-    for key in top_forty:
-        data[key] = yahooFin.Ticker(key + '.JO').history(period='1d', interval='1d').to_dict()
+    data = []
+    for key, company_name in top_forty.items():
+        yahoo_data = yahooFin.Ticker(key + '.JO').history(period='1d', interval='1d').to_dict()
+        entry = {
+            'symbol': key,
+            'company_name': company_name,
+            'yahoo_data': yahoo_data
+        }
+        data.append(entry)
     return data

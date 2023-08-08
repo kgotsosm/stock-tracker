@@ -1,9 +1,9 @@
-import StockNames from "./components/StockNames.jsx";
+import StockHome from "./components/StockHome.jsx";
 function App() {
 
   return (
     <>
-      <StockNames />
+      <StockHome />
     </>
   );
 }
