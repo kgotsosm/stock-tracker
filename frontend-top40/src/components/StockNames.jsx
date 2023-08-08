@@ -18,42 +18,66 @@ export default function StockNames() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const transformedData = stockData.map((stock) => ({
-    company_name: stock.company_name,
-    Open: stock.yahoo_data.Open[new Date().toISOString().split("T")[0]],
-    High: stock.yahoo_data.High[new Date().toISOString().split("T")[0]],
-    Low: stock.yahoo_data.Low[new Date().toISOString().split("T")[0]],
-  }));
+// Extract data from the stockData and transform it
+const transformedData = stockData.map(stock => ({
+  symbol: stock.symbol,
+  company_name: stock.company_name,
+  open: stock.yahoo_data.Open[Object.keys(stock.yahoo_data.Open)[0]],
+  high: stock.yahoo_data.High[Object.keys(stock.yahoo_data.High)[0]],
+  low: stock.yahoo_data.Low[Object.keys(stock.yahoo_data.Low)[0]],
+  close: stock.yahoo_data.Close[Object.keys(stock.yahoo_data.Close)[0]],
+  volume: stock.yahoo_data.Volume[Object.keys(stock.yahoo_data.Volume)[0]],
+}));
 
-  return (
-    <div className="bg-slate-500">
-      return (
-      <GridComponent dataSource={stockData}>
-        <ColumnsDirective>
-          <ColumnDirective
-            field="company_name"
-            width="100"
-            textAlign="Center"
-          />
-          <ColumnDirective
-            field="stock.yahoo_data.Open"
-            width="100"
-            textAlign="Center"
-          />
-          <ColumnDirective
-            field="stock.yahoo_data.High"
-            width="100"
-            textAlign="Center"
-          />
+return (
+  <div className="bg-slate-500 m-20">
+    <GridComponent dataSource={transformedData}>
+      <ColumnsDirective>
+        <ColumnDirective
+          field="symbol"
+          headerText="Symbol"
+          width="100"
+          textAlign="Center"
+        />
+        <ColumnDirective
+          field="company_name"
+          headerText="Company Name"
+          width="100"
+          textAlign="Center"
+        />
+        <ColumnDirective
+          field="open"
+          headerText="Open"
+          width="100"
+          textAlign="Center"
+        />
+        <ColumnDirective
+          field="high"
+          headerText="High"
+          width="100"
+          textAlign="Center"
+        />
+        <ColumnDirective
+          field="low"
+          headerText="Low"
+          width="100"
+          textAlign="Center"
+        />
+        <ColumnDirective
+          field="close"
+          headerText="Close"
+          width="100"
+          textAlign="Center"
+        />
+        <ColumnDirective
+          field="volume"
+          headerText="Volume"
+          width="100"
+          textAlign="Center"
+        />
+      </ColumnsDirective>
+    </GridComponent>
+  </div>
+);
 
-          <ColumnDirective
-            field="stock.yahoo_data.Low"
-            width="100"
-            textAlign="Center"
-          />
-        </ColumnsDirective>
-      </GridComponent>
-      );
-    </div>
-  );
 }
