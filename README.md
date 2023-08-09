@@ -2,6 +2,8 @@
 
 This is a simple web application that displays the daily stock prices of JSE Top40 stocks. It utilizes a FastAPI backend to fetch stock data from the Yahoo Finance API and presents the data using a Syncfusion Grid in the UI. Done as a practical example of using a Python backend and connecting it to a React frontend.
 
+![Rendered grid](grid.png)
+
 ## Features
 
 - Fetches and displays daily stock prices of JSE Top40 stocks.
