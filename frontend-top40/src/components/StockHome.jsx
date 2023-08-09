@@ -10,7 +10,7 @@ export default function StockHome() {
   const [stockData, setStockData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/fetch_yahoo_data")
+    fetch("/.netlify/functions/main/fetch_yahoo_data")
       .then((response) => response.json())
       .then((data) => {
         setStockData(data);

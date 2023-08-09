@@ -6,7 +6,7 @@ app = FastAPI()
 
 # Configure CORS settings
 origins = [
-    "http://localhost:5173",  # Add any other frontend URLs as needed
+    "http://ksm-jse-top40.netlify.app",  # Add any other frontend URLs as needed
 ]
 
 app.add_middleware(
