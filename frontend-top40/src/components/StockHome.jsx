@@ -31,7 +31,7 @@ const transformedData = stockData.map(stock => ({
 
 return (
   <div className="bg-slate-500 m-20">
-    <GridComponent dataSource={transformedData}>
+    <GridComponent dataSource={transformedData} style={{ backgroundColor: '#87ceeb' }}>
       <ColumnsDirective>
         <ColumnDirective
           field="symbol"
